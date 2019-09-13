@@ -56,13 +56,13 @@ int main()
 	cin >> cases;
 	int count = 0;
 	while (count < cases) {
-		// n: ÇĞ»ıÀÇ ¼ö
+		// n: í•™ìƒì˜ ìˆ˜
 		int n;
 		cin >> n;
-		// pairs: Ä£±¸ ½ÖÀÇ ¼ö
+		// pairs: ì¹œêµ¬ ìŒì˜ ìˆ˜
 		int pairs;
 		cin >> pairs;
-		// Ä£±¸ °ü°è ±â·Ï ¹è¿­
+		// ì¹œêµ¬ ê´€ê³„ ê¸°ë¡ ë°°ì—´
 		int **arr = new int*[n];
 		for (int i = 0; i < n; ++i)
 			arr[i] = new int[n];
