@@ -10,42 +10,37 @@
 
 using namespace std;
 
-#define arr_size 10
-
-void print_arr(int arr[], int size) {
-	for (int i = 0; i < size; i++) {
-		cout.width(2);
-		cout << arr[i] << " ";
-		if ((i + 1) % 10 == 0)
-			cout << endl;
+void print_vec(const vector<int>& vec) {
+	for (auto i = vec.begin(); i != vec.end(); ++i) {
+		cout << *i << " ";
 	}
 	cout << endl;
 }
 
-int __binary_search(int arr[], int size, int key) {
-	int low = 0, high = size - 1;
-	while (low <= high) {
-		int mid = (low + high) / 2;
-		if (key > arr[mid])
-			low = mid + 1;
-		else if (key < arr[mid])
-			high = mid - 1;
-		else
-			return mid;
+/*
+// 이 함수는 0~n개의 원소를 선택하여 a1<a2<a3<a4를 만족하는 경우를 모두 출력
+// n: 0~n개의 원소 중 선택
+// vec: 순서쌍의 저장
+// to_pick: 앞으로 선택해야 할 숫자의 갯수
+*/
+void picking(int n, vector<int>& vec, int to_pick) {
+	// 뽑을 것이 없는 경우
+	if (to_pick == 0) {
+		print_vec(vec);
+		return;
 	}
-	return -1;
+	int min = to_pick == 4 ? 0 : vec.back() + 1;
+	for (int i = min; i <= n; ++i) {
+		vec.push_back(i);
+		picking(n, vec, to_pick - 1);
+		vec.pop_back();
+	}
 }
 
 int main()
 {
-	int arr[arr_size];
-	for (int i = 0; i < arr_size; i++) {
-		arr[i] = rand() % arr_size;
-	}
-	sort(arr, arr + arr_size);
-	print_arr(arr, sizeof(arr)/sizeof(int));
-
-	cout << __binary_search(arr, arr_size, 5) << endl;
+	vector<int> vec;
+	picking(9, vec, 4);
 
 	return 0;
 }
