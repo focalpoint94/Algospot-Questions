@@ -21,11 +21,11 @@ using namespace std;
 
 typedef int KeyType;
 struct Node {
-	// NodeÀÇ ¿ø¼Ò
+	// Nodeì˜ ì›ì†Œ
 	KeyType key;
-	// NodeÀÇ ¿ì¼±¼øÀ§
+	// Nodeì˜ ìš°ì„ ìˆœìœ„
 	int priority;
-	// ÀüÃ¼ ¼­ºê Æ®¸®ÀÇ Å©±â
+	// ì „ì²´ ì„œë¸Œ íŠ¸ë¦¬ì˜ í¬ê¸°
 	int size;
 	Node *left, *right;
 
@@ -39,7 +39,7 @@ struct Node {
 	}
 };
 typedef pair<Node*, Node*> NodePair;
-// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸³À» key ¹Ì¸¸ÀÇ °ª°ú ÀÌ»óÀÇ °ªÀ» °®´Â µÎ °³ÀÇ Æ®¸³À¸·Î ºĞ¸®ÇÏ¿©, µÎ °³ÀÇ Æ÷ÀÎÅÍ¸¦ ¹İÈ¯
+// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦½ì„ key ë¯¸ë§Œì˜ ê°’ê³¼ ì´ìƒì˜ ê°’ì„ ê°–ëŠ” ë‘ ê°œì˜ íŠ¸ë¦½ìœ¼ë¡œ ë¶„ë¦¬í•˜ì—¬, ë‘ ê°œì˜ í¬ì¸í„°ë¥¼ ë°˜í™˜
 NodePair split(Node* root, KeyType key) {
 	if (root == NULL) return NodePair(NULL, NULL);
 	if (key > root->key) {
@@ -53,7 +53,7 @@ NodePair split(Node* root, KeyType key) {
 		return NodePair(ls.first, root);
 	}
 }
-// root¸¦ ·çÆ®·Î ÇÏ´Â Æ®¸³¿¡ »õ ³ëµå node¸¦ »ğÀÔÇÑ µÚ °á°ú Æ®¸³ÀÇ ·çÆ®¸¦ ¹İÈ¯
+// rootë¥¼ ë£¨íŠ¸ë¡œ í•˜ëŠ” íŠ¸ë¦½ì— ìƒˆ ë…¸ë“œ nodeë¥¼ ì‚½ì…í•œ ë’¤ ê²°ê³¼ íŠ¸ë¦½ì˜ ë£¨íŠ¸ë¥¼ ë°˜í™˜
 Node* insert(Node* root, Node* node) {
 	if (root == NULL) return node;
 	if (root->priority < node->priority) {
@@ -104,7 +104,7 @@ Node* erase(Node* root, KeyType key) {
 		root->setRight(erase(root->right, key));
 	return root;
 }
-// key Å©±â ¼øÀ¸·Î k¹øÂ° ¿ø¼Ò¸¦ ¹İÈ¯
+// key í¬ê¸° ìˆœìœ¼ë¡œ kë²ˆì§¸ ì›ì†Œë¥¼ ë°˜í™˜
 Node* kth(Node* root, int k) {
 	int leftSize = 0;
 	if (root->left != NULL) leftSize = root->left->size;
