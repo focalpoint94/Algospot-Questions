@@ -32,13 +32,13 @@ bool is_Dominated(int x, int y) {
 void remove_Dominated(int x, int y) {
 	if (coords.size() == 0) return;
 	map<int, int>::iterator it = coords.lower_bound(x);
-	// *itÀÌ °¡Àå ÀÛÀº Á¡ÀÌ¶ó¸é, 
+	// *itì´ ê°€ì¥ ì‘ì€ ì ì´ë¼ë©´, 
 	if (it == coords.begin()) return;
 	--it;
 	while (true) {
 		if (it->second > y)
 			break;
-		// Á¡ÀÌ ÇÏ³ª ³²¾ÆÀÖÀ¸¸ç, ±× Á¡ ¶ÇÇÑ Áö¹è´çÇÑ °æ¿ì
+		// ì ì´ í•˜ë‚˜ ë‚¨ì•„ìˆìœ¼ë©°, ê·¸ ì  ë˜í•œ ì§€ë°°ë‹¹í•œ ê²½ìš°
 		if (it == coords.begin()) {
 			coords.erase(it);
 			break;
